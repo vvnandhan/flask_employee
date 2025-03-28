@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Employee Management with Flask JWT</title>
+    <style>
+      /* Basic styling */
+      body { font-family: Arial, sans-serif; margin: 20px; }
+      #employee-section { display: none; }
+      table, th, td { border: 1px solid #000; border-collapse: collapse; }
+      th, td { padding: 8px; }
+      form { margin-bottom: 20px; }
+      .hidden { display: none; }
+    </style>
+  </head>
+  <body>
+    <h1>Employee Management with Authentication</h1>
+
+    <!-- Login Section -->
+    <div id="login-section">
+      <h2>Login</h2>
+      <form id="login-form">
+        <label for="username">Username:</label>
+        <input type="text" id="username" required>
+        <label for="password">Password:</label>
+        <input type="password" id="password" required>
+        <button type="submit">Login</button>
+      </form>
+      <div id="login-error" style="color: red;"></div>
+    </div>
+
+    <!-- Employee Management Section -->
+    <div id="employee-section">
+      <button id="logout-btn">Logout</button>
+      <h2>Add / Edit Employee</h2>
+      <form id="employee-form">
+        <!-- Hidden field to store employee id for editing -->
+        <input type="hidden" id="employee-id" value="">
+
+        <label for="first_name">First Name:</label>
+        <input type="text" id="first_name" required>
+
+        <label for="last_name">Last Name:</label>
+        <input type="text" id="last_name" required>
+
+        <label for="department">Department:</label>
+        <input type="text" id="department" required>
+
+        <label for="salary">Salary:</label>
+        <!-- Leave empty to auto-generate a random salary -->
+        <input type="number" id="salary" placeholder="Leave empty for random">
+
+        <button type="submit">Submit</button>
+        <button type="button" id="cancel-edit" style="display: none;">Cancel</button>
+      </form>
+
+      <h2>Employee List</h2>
+      <table id="employee-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Department</th>
+            <th>Salary</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Rows will be populated dynamically -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Link to our JavaScript file using url_for -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+  </body>
+</html>
